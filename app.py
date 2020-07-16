@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, request
 import csv
 import random
 import requests
@@ -14,6 +14,15 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/my_pool', methods=['GET','POST'])
+def my_pool():
+    if request.method == 'POST':
+        movies_selected = request.form.getlist('movies')
+        # movies_selected = request.form['movies']
+        print(str(movies_selected))
+        return redirect('/about')
+    return render_template('my_pool.html')
 
 @app.route('/random')
 def select_random():
