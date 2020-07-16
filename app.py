@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, session
 import pandas as pd
 import csv
 import random
@@ -6,30 +6,53 @@ import requests
 import config
 
 df = pd.read_csv('netflix_titles.csv', header='infer')
-
 app = Flask(__name__)
+app.secret_key = config.SECRET_KEY
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'username' in session:
+        username = session['username']
+        return render_template('index.html', username=username)
+    
+    return redirect(url_for('login'))
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+      session['username'] = request.form['username']
+      return redirect(url_for('index'))
+    
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+   # remove the username from the session if it is there
+   session.pop('username', None)
+   return redirect(url_for('login'))
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-@app.route('/my_pool/', methods=['GET','POST'])
+@app.route('/my_pool')
 def my_pool():
-    if request.method == 'POST':
-        # movies_selected = request.form.getlist('movies')
-        # movies_selected = request.form['movies']
-        # print(str(movies_selected))
-        return redirect('/about')
+    # if request.method == 'POST':
+    #     # movies_selected = request.form.getlist('movies')
+    #     # movies_selected = request.form['movies']
+    #     # print(str(movies_selected))
+    #     # print(request.form['movie_selected'])
+    #     return redirect('/about')
     
-    return render_template('my_pool.html')
+    if 'username' in session:
+        return render_template('my_pool.html')
+    
+    return redirect(url_for('login'))
 
 @app.route('/random')
 def select_random():
-
     # randomly select a movie
     row = df.sample()
     
@@ -65,4 +88,4 @@ def select_random():
     return render_template("index.html", movie=movie)
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=4996)

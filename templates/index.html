@@ -4,6 +4,11 @@
 {% endblock %}
 
 {% block body %}
+<!-- background image -->
+{% if username %}
+<a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+{% endif %}
+
 {% if movie %}
 <div class="card" style="width:300px; margin:0 auto;">
     <img src={{movie.image}} class="card-img-top" alt="...">
@@ -23,4 +28,5 @@
     </div>
   </div>
   {% endif %}
+  
 {% endblock %}
