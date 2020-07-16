@@ -6,21 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title> Netflix Randomizer</title>
+    <title> Movie Randomizer</title>
     {% block head %}{% endblock %}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Netflix Randomizer</a>
+        <a class="navbar-brand">Movie Randomizer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                My Pool
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item">SelecPool</a>
+                <div class="dropdown-divider"></div>
+                {%for i in range(2, 11)%}
+                <a class="dropdown-item" href="/my_pool/{{i}}">{{i}}</a> 
+                {%endfor%} 
+              </div>
+            </li> -->
             <a class="nav-item nav-link" href="/my_pool">My Pool</a>
+            <a class="nav-item nav-link" href="/random">Select Random</a>
             <a class="nav-item nav-link" href="/about">About</a>
-            <a class="nav-item nav-link" href="/random">*Select Random*</a>
             <!-- <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
         </div>
     </div>

@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, redirect, request
+import pandas as pd
 import csv
 import random
 import requests
 import config
 
+df = pd.read_csv('netflix_titles.csv', header='infer')
 
 app = Flask(__name__)
 
@@ -15,37 +17,36 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/my_pool', methods=['GET','POST'])
+@app.route('/my_pool/', methods=['GET','POST'])
 def my_pool():
     if request.method == 'POST':
-        movies_selected = request.form.getlist('movies')
+        # movies_selected = request.form.getlist('movies')
         # movies_selected = request.form['movies']
-        print(str(movies_selected))
+        # print(str(movies_selected))
         return redirect('/about')
+    
     return render_template('my_pool.html')
 
 @app.route('/random')
 def select_random():
 
     # randomly select a movie
-    with open('netflix_titles.csv', encoding='utf8') as f:
-        reader = csv.reader(f)
-        row = random.choice(list(reader))
+    row = df.sample()
     
     movie = {
-        'id': row[0],
-        'category': row[1],
-        'title': row[2],
-        'director': row[3],
-        'cast': row[4],
-        'country': row[5],
-        'date_added': row[6],
-        'release_year': row[7],
-        'rating': row[8],
-        'duration': row[9],
-        'genre': row[10],
-        'description': row[11],
-        # default
+        'id': row['show_id'].values[0],
+        'category': row['type'].values[0],
+        'title': row['title'].values[0],
+        'director': row['director'].values[0],
+        'cast': row['cast'].values[0],
+        'country': row['country'].values[0],
+        'date_added': row['date_added'].values[0],
+        'release_year': row['release_year'].values[0],
+        'rating': row['rating'].values[0],
+        'duration': row['duration'].values[0],
+        'genre': row['listed_in'].values[0],
+        'description': row['description'].values[0],
+        # default image
         'image': 'https://live.staticflickr.com/4422/36193190861_93b15edb32_z.jpg',
         'imdb': 'Not Available'
    }
