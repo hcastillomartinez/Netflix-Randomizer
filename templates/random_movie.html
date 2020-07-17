@@ -1,6 +1,15 @@
 {% extends 'base.html'%}
 
 {% block head %}
+<style>
+body {background-color: powderblue;}
+</style>
+{% endblock %}
+
+{% block navbar%}
+{% if username%}
+<a class="nav-item nav-link" href="/logout">Logout</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}

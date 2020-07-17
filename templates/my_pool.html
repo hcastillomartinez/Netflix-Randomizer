@@ -1,13 +1,16 @@
 {% extends 'base.html'%}
 
 {% block head %}
+<style>
+  body {background-color: powderblue;}
+  </style>
+{% endblock %}
 
+{% block navbar%}
+<a class="nav-item nav-link" href="/logout">Logout</a>
 {% endblock %}
 
 {% block body %}
-<div style="margin-top: 1%;">
-  <a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
-</div>
 <div class="container">
   <form style="padding-top: 1%;" method="POST" action="/my_pool">
     <div class="form-group">
@@ -21,8 +24,8 @@
 </div>
 
 <div style="padding-top: 1%;"class="container">
-  <table class="table">
-    <thead class="thead-dark">
+  <table class="table table-striped table-dark">
+    <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">First</th>

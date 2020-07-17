@@ -1,13 +1,28 @@
 {% extends 'base.html'%}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+<style>
+  body {background-color: powderblue;}
+</style>
+
+{% endblock %}
+
+{% block navbar%}
+<a class="nav-item nav-link" href="/logout">Logout</a>
 {% endblock %}
 
 {% block body %}
-{% if username %}
-<div style="margin-top: 1%;">
-  <a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+
+<div class="jumbotron" style="margin-top: 1%;">
+  <h1 class="display-4">Welcome, {{username}}!</h1>
+  <p class="lead">The pools that you enter are recorded into a database for a future personal project regarding recommender systems. The more you use this free website's pool feature, the more data I can gather on user preferences so thank you!
+  <br>
+  Note: You can always access the random movie feature or the about page regardless of login status.
+  </p>
+  <hr class="my-4">
+  <p>Check out the features here or through the menu above.</p>
+  <a style="margin-top: 1%;" class="btn btn-primary btn-lg" href="/random" role="button">Get a Completely Random Title</a>
+  <a style="margin-top: 1%;" class="btn btn-primary btn-lg" href="/my_pool" role="button">Check Out Your Pool</a>
 </div>
-{% endif %}
+
 {% endblock %}

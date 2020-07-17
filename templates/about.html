@@ -1,14 +1,32 @@
 {% extends 'base.html'%}
 
 {% block head %}
+<style>
+    body {background-color: powderblue;}
+</style>
+{% endblock %}
+
+{% block navbar%}
+{% if username%}
+<a class="nav-item nav-link" href="/logout">Logout</a>
+{% endif %}
 {% endblock %}
 
 {% block body %}
-
-<div class="container">
+<div class="jumbotron jumbotron-fluid" style="margin-top: 2%;">
+    <div class="container">
+      <h1 class="display-4">Hello!</h1>
+      <p class="lead">I created this website when I heard (and felt often myself) how difficult picking a movie or show to watch.
+        <br>
+        I am using a dataset that can be found <a href="https://www.kaggle.com/shivamb/netflix-shows">here</a> and use the open movie database api <a href="http://www.omdbapi.com/">(OMDb)</a>
+     to fill in other important information that the dataset was missing.
+      </p>
+    </div>
+  </div>
+<!-- <div class="container">
     <h1>Hello!</h1>
     <p>I created this website when I heard (and felt often myself) how difficult picking a movie or show to watch.</p>
     <p>I am using a dataset that can be found <a href="https://www.kaggle.com/shivamb/netflix-shows">here</a> and use the open movie database api <a href="http://www.omdbapi.com/">(OMDb)</a>
      to fill in other important information that the dataset was missing.</p>
-</div>
+</div> -->
 {% endblock %}

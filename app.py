@@ -35,6 +35,10 @@ def logout():
 
 @app.route('/about')
 def about():
+    if 'username' in session:
+        username = session['username']
+        return render_template('about.html', username=username)
+
     return render_template('about.html')
 
 @app.route('/my_pool', methods=['GET', 'POST'])
@@ -85,7 +89,12 @@ def select_random():
     if 'imdbRating' in movie_data:
         movie['imdb'] = movie_data['imdbRating']
     # send all this data to the index.html template
+
+    if 'username' in session:
+        username = session['username']
+        return render_template('random_movie.html',movie=movie, username=username)
+
     return render_template("random_movie.html", movie=movie)
     
 if __name__ == "__main__":
-    app.run(debug=True, port=4996)
+    app.run(debug=True, port=4997)
