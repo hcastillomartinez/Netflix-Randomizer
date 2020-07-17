@@ -37,14 +37,14 @@ def logout():
 def about():
     return render_template('about.html')
 
-@app.route('/my_pool')
+@app.route('/my_pool', methods=['GET', 'POST'])
 def my_pool():
-    # if request.method == 'POST':
-    #     # movies_selected = request.form.getlist('movies')
-    #     # movies_selected = request.form['movies']
-    #     # print(str(movies_selected))
-    #     # print(request.form['movie_selected'])
-    #     return redirect('/about')
+    if request.method == 'POST':
+        # movies_selected = request.form.getlist('movies')
+        # movies_selected = request.form['movies']
+        # print(str(movies_selected))
+        print(request.form['title'])
+        return redirect('/about')
     
     if 'username' in session:
         return render_template('my_pool.html')
@@ -85,7 +85,7 @@ def select_random():
     if 'imdbRating' in movie_data:
         movie['imdb'] = movie_data['imdbRating']
     # send all this data to the index.html template
-    return render_template("index.html", movie=movie)
+    return render_template("random_movie.html", movie=movie)
     
 if __name__ == "__main__":
     app.run(debug=True, port=4996)

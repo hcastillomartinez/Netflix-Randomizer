@@ -1,32 +1,13 @@
 {% extends 'base.html'%}
 
 {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 {% endblock %}
 
 {% block body %}
-<!-- background image -->
 {% if username %}
-<a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+<div style="margin-top: 1%;">
+  <a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+</div>
 {% endif %}
-
-{% if movie %}
-<div class="card" style="width:300px; margin:0 auto;">
-    <img src={{movie.image}} class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{movie.title}}</h5>
-      <p class="card-text">{{movie.description}}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Category: {{movie.category}}</li>
-      <li class="list-group-item">Rating: {{movie.rating}}</li>
-      <li class="list-group-item">Release Year: {{movie.release_year}}</li>
-      <li class="list-group-item">IMDB Rating: {{movie.imdb}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="https://www.netflix.com/watch/{{movie.id}}" class="card-link">Watch Now</a>
-      <a href="{{url_for('select_random')}}" class="card-link">Give Me Another!</a>
-    </div>
-  </div>
-  {% endif %}
-  
 {% endblock %}

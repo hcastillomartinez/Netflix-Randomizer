@@ -5,5 +5,52 @@
 {% endblock %}
 
 {% block body %}
+<div style="margin-top: 1%;">
+  <a href="/logout"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+</div>
+<div class="container">
+  <form style="padding-top: 1%;" method="POST" action="/my_pool">
+    <div class="form-group">
+      <label for="title">Enter a Title</label>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Ex: Finding Nemo">
+      <br>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Add Title to Pool</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">Give me a something to watch!</button>
+    </div>
+  </form>
+</div>
+
+<div style="padding-top: 1%;"class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}

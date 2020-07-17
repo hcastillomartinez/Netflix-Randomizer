@@ -2,3 +2,4 @@
 config.*
 test.py
 *.csv
+user.py
