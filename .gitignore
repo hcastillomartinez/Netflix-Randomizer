@@ -1,0 +1,5 @@
+# hide keys for API and user sessions
+config.*
+test.*
+*.csv
+__pycache__
