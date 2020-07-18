@@ -1,5 +1,0 @@
-# hide keys for API and user sessions
-config.*
-test.*
-*.csv
-user.py
