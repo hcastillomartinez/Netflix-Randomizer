@@ -11,11 +11,11 @@
       <div id="login-row" class="row justify-content-center align-items-center">
           <div id="login-column" class="col-md-6">
               <div id="login-box" class="col-md-12">
-                  <form id="login-form" class="form" action="/login" method="POST">
+                  <form id="login-form" name="main_form" class="form" action="/login" method="POST">
                       <h3 class="text-center text-info">Login</h3>
                       <div class="form-group">
                           <label for="username" class="text-info">Username:</label><br>
-                          <input type="text" name="username" id="username" class="form-control">
+                          <input type="text" name="username" id="username" class="form-control" required=True>
                       </div>
                       <div class="form-group" style="text-align: center;">
                           <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
@@ -26,20 +26,4 @@
       </div>
   </div>
 </div>
-
-<!-- <div style="text-align: center; margin-top: 3%;">
-<form action="/login" method="POST">
-    <div class="col-xs-4">
-    <label for="ex3">Username:</label>
-    <input id="username" name="username" type="text">
-    <small id="emailHelp" class="form-text text-muted">Enter something that you will remember for future use.</small>
-    </div>
-     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" id="username" placeholder="Enter a username">
-      <small id="emailHelp" class="form-text text-muted">Enter something that you will remember for future use.</small>
-    </div> -->
-    <!-- <button style="margin-top: 1%" type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  </div> -->
 {% endblock %}
